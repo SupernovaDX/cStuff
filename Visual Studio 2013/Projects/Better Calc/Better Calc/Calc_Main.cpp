@@ -49,14 +49,7 @@ int main(){
 	cin >> num2;
 	check();
 	anum1 = num2;
-	if (check() == 1){
-		system("CLS");
-		main();
-		aop = "#";
-		anum = 0;
-		anum1 = 0;
-		answer = 0;
-	}
+
 	if (op == "+"){
 		answer = add(num1, num2);
 	}
