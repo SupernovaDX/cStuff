@@ -19,19 +19,23 @@ double div(double num1, double num2){
 }
 int main(){
 	double num1, num2, answer;
+	aop = "#";
+	anum = 0;
+	anum1 = 0;
+	answer = 0;
 	string op;
 	system("CLS");
-	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
 
 	cin >> num1;
 	anum = num1;
 	system("CLS");
-	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
 
 	cin >> op;
 	aop = op;
 	system("CLS");
-	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
 
 	cin >> num2;
 	anum1 = num2;
@@ -48,7 +52,10 @@ int main(){
 		answer = div(num1, num2);
 	}
 	system("CLS");
-	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
-
+	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
+	cout << "Press any Key to Restart" << endl;
+	int restart;
+	cin >> restart;
+	main();
 }
 
