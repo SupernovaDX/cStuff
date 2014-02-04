@@ -17,21 +17,22 @@ double mult(double num1, double num2){
 double div(double num1, double num2){
 	return num1 / num2;
 }
-double display(){
-	system("CLS");
-    cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
-
-}
 int main(){
 	double num1, num2, answer;
 	string op;
-	display();
+	system("CLS");
+	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+
 	cin >> num1;
 	anum = num1;
-	display();
+	system("CLS");
+	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+
 	cin >> op;
 	aop = op;
-	display();
+	system("CLS");
+	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+
 	cin >> num2;
 	anum1 = num2;
 	if (op == "+"){
@@ -46,5 +47,8 @@ int main(){
 	if (op == "/"){
 		answer = div(num1, num2);
 	}
+	system("CLS");
+	cout << anum << " " << aop << " " << anum1 << "=" << ans << endl;
+
 }
 
