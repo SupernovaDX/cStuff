@@ -54,7 +54,7 @@ int main(){
 	system("CLS");
 	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
 	cout << "Press any Key to Restart" << endl;
-	int restart;
+	string restart;
 	cin >> restart;
 	main();
 }
