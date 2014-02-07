@@ -35,6 +35,25 @@ double div(double num1, double num2){
 	} while (!(a >> 0));
 	return c;
 }*/
+double math(string op){
+	double answer;
+	if (aop == "+"){
+		answer = add(anum, anum1);
+	}
+	if (aop == "-"){
+		answer = sub(anum, anum1);
+	}
+	if (aop == "*"){
+		answer = mult(anum, anum1);
+	}
+	if (aop == "x"){
+		answer = mult(anum, anum1);
+	}
+	if (aop == "/"){
+		answer = div(anum, anum1);
+	}
+	return answer;
+}
 int main(){
 //	double num1, num2, answer;
 	int con(0);
@@ -56,21 +75,15 @@ int main(){
 		if (con == 2){
 			cin >> anum1;
 		}
+		if (!cin & con !=2) {
+			cout << "Input was not correct" << endl;
+			con -= 1;
+			std::cin.clear();
+		}
 		con += 1;
 	}
-
-	if (aop == "+"){
-		answer = add(anum, anum1);
-	}
-	if (aop == "-"){
-		answer = sub(anum, anum1);
-	}
-	if (aop == "*" || op == "x"){
-		answer = mult(anum, anum1);
-	}
-	if (aop == "/"){
-		answer = div(anum, anum1);
-	}
+	answer = math(aop);
+	
 	system("CLS");
 	cout << anum << " " << aop << " " << anum1 << "=" << answer << endl;
 	cout << "Press any Key to Restart" << endl;
