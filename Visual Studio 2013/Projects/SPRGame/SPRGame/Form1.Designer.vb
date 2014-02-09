@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class From1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(From1))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,6 +43,8 @@ Partial Class Form1
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,6 +56,7 @@ Partial Class Form1
         '
         'Button1
         '
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.Location = New System.Drawing.Point(418, 383)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(89, 32)
@@ -63,6 +66,8 @@ Partial Class Form1
         '
         'Button2
         '
+        Me.Button2.ForeColor = System.Drawing.Color.Yellow
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.Location = New System.Drawing.Point(418, 335)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(89, 32)
@@ -120,30 +125,32 @@ Partial Class Form1
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(99, 367)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(51, 17)
+        Me.Label6.Size = New System.Drawing.Size(16, 17)
         Me.Label6.TabIndex = 9
-        Me.Label6.Text = "Label6"
+        Me.Label6.Text = "0"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(99, 398)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(51, 17)
+        Me.Label7.Size = New System.Drawing.Size(16, 17)
         Me.Label7.TabIndex = 10
-        Me.Label7.Text = "Label7"
+        Me.Label7.Text = "0"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(99, 425)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(51, 17)
+        Me.Label8.Size = New System.Drawing.Size(16, 17)
         Me.Label8.TabIndex = 11
-        Me.Label8.Text = "Label8"
+        Me.Label8.Text = "0"
         '
         'Button3
         '
+        Me.Button3.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.Location = New System.Drawing.Point(418, 425)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(89, 32)
@@ -237,11 +244,32 @@ Partial Class Form1
         Me.Button4.Text = "Next Game"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Form1
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(427, 9)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(33, 17)
+        Me.Label10.TabIndex = 22
+        Me.Label10.Text = "You"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(72, 9)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(71, 17)
+        Me.Label11.TabIndex = 23
+        Me.Label11.Text = "Opponent"
+        '
+        'From1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(551, 491)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.PictureBox6)
@@ -263,7 +291,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.PictureBox7)
         Me.Cursor = System.Windows.Forms.Cursors.PanNW
-        Me.Name = "Form1"
+        Me.Name = "From1"
         Me.Text = "Form1"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -296,5 +324,7 @@ Partial Class Form1
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class

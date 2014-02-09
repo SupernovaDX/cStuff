@@ -1,9 +1,12 @@
 ﻿Imports System.Threading
-Public Class Form1
+Public Class From1
     Dim prss As Boolean
     Dim Clash As Integer
     Dim isRunning As Boolean
     Dim go As Boolean
+    Dim wins As Integer = 0
+    Dim Losses As Integer = 0
+    Dim Ties As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PictureBox1.Visible = False
         PictureBox2.Visible = False
@@ -15,7 +18,7 @@ Public Class Form1
         prss = False
         isRunning = False
         go = False
-
+        wlt()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -49,11 +52,61 @@ Public Class Form1
         End If
     End Sub
 
-    Private Function Ref(Opponent As Integer, Player As Integer) As String
+    Public Function Ref2(Opponent As Integer, Player As Integer) As Integer
         If (Opponent = Player) Then
-            Return "Tie"
+            Return 3
+        End If
+        If (Opponent = 1) Then
+            If (Player = 2) Then
+                Return 1
+            End If
+            Return 2
+        End If
+        If (Opponent = 2) Then
+            If (Player = 3) Then
+                Return 1
+            End If
+            Return 2
+        End If
+        If (Opponent = 3) Then
+            If (Player = 1) Then
+                Return 1
+            End If
+            Return 2
         End If
         Return "#NULL"
+    End Function
+    Public Function Ref(Opponent As Integer, Player As Integer) As String
+        If (Opponent = Player) Then
+            Return "Tie"
+            Ties = Ties + 1
+        End If
+        If (Opponent = 1) Then
+            If (Player = 2) Then
+                Return "Win"
+                wins = wins + 1
+            End If
+            Return "Lose"
+            Losses = Losses + 1
+        End If
+        If (Opponent = 2) Then
+            If (Player = 3) Then
+                Return "Win"
+                wins = wins + 1
+            End If
+            Return "Lose"
+            Losses = Losses + 1
+        End If
+        If (Opponent = 3) Then
+            If (Player = 1) Then
+                Return "Win"
+                wins = wins + 1
+            End If
+            Return "Lose"
+            Losses = Losses + 1
+        End If
+        Return "#NULL"
+        wlt()
     End Function
 
     Private Sub wait(ByVal interval As Integer)
@@ -67,6 +120,7 @@ Public Class Form1
     End Sub
     Private Sub Run()
         If (prss = True) Then
+            Dim outcome As Integer
             isRunning = True
             Label1.Text = Sead(Clash)
             wait(500)
@@ -78,7 +132,18 @@ Public Class Form1
             comp = rnd.Next(3) + 1
             Label2.Text = Sead(comp)
             Display(comp)
+            outcome = Ref2(comp, Clash)
             Label9.Text = Ref(comp, Clash)
+            If (outcome = 1) Then
+                wins += 1
+            ElseIf (outcome = 2) Then
+                Losses += 1
+            ElseIf (outcome = 3) Then
+                Ties += 1
+            End If
+            Label6.Text = wins
+            Label7.Text = Losses
+            Label8.Text = Ties
         End If
     End Sub
 
@@ -114,5 +179,13 @@ Public Class Form1
         prss = False
         isRunning = False
         go = False
+        Label2.Text = ("")
+        Label1.Text = ("")
     End Sub
+    Sub wlt()
+        Label6.Text = wins
+        Label7.Text = Losses
+        Label8.Text = Ties
+    End Sub
+
 End Class
