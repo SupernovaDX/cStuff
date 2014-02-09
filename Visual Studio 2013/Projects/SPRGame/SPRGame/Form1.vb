@@ -7,6 +7,7 @@ Public Class From1
     Dim wins As Integer = 0
     Dim Losses As Integer = 0
     Dim Ties As Integer = 0
+    Dim counting As Boolean = False
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PictureBox1.Visible = False
         PictureBox2.Visible = False
@@ -112,11 +113,36 @@ Public Class From1
     Private Sub wait(ByVal interval As Integer)
         Dim sw As New Stopwatch
         sw.Start()
+
+        Do While sw.ElapsedMilliseconds < interval
+            ' Allows UI to remain responsive
+
+            Application.DoEvents()
+            spin()
+        Loop
+        counting = False
+        sw.Stop()
+    End Sub
+
+    Private Sub wait2(ByVal interval As Integer)
+        Dim sw As New Stopwatch
+        sw.Start()
         Do While sw.ElapsedMilliseconds < interval
             ' Allows UI to remain responsive
             Application.DoEvents()
         Loop
         sw.Stop()
+    End Sub
+    Sub spin()
+        wait2(20)
+        PictureBox4.Visible = True
+        wait2(20)
+        PictureBox5.Visible = True
+        wait2(20)
+        PictureBox6.Visible = True
+        PictureBox4.Visible = False
+        PictureBox5.Visible = False
+        PictureBox6.Visible = False
     End Sub
     Private Sub Run()
         If (prss = True) Then

@@ -66,6 +66,7 @@ Partial Class From1
         '
         'Button2
         '
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button2.ForeColor = System.Drawing.Color.Yellow
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.Location = New System.Drawing.Point(418, 335)
@@ -237,6 +238,7 @@ Partial Class From1
         'Button4
         '
         Me.Button4.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Location = New System.Drawing.Point(219, 359)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(89, 32)
