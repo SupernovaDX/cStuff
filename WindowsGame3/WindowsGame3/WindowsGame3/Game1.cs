@@ -76,12 +76,17 @@ namespace WindowsGame3
         protected override void Update(GameTime gameTime)
         {
             input.Update();
+            if (input.DLeft(true)){
+                ppx++; 
+                ppy = ppx * 2;
+            }
             if (input.A(true)) {
                 animate.Update();
             }
             if (input.A(false)) {
                 animate.Reset();
             }
+
             // Allows the game to exit
 
             // TODO: Add your update logic here

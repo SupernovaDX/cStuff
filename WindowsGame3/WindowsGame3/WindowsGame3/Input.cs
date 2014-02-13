@@ -10,14 +10,20 @@ namespace WindowsGame3
     public class Input
     {
         private bool a;
+        private bool dl;
         public Input() 
         {
         }
         public void Update()
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) 
-            { 
-            
+            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
+            {
+                dl = true;
+            }
+            else
+            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released)
+            {
+                dl = false;
             }
             else
             if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
@@ -32,6 +38,24 @@ namespace WindowsGame3
             else
             
             fls();
+        }
+        public bool DLeft(bool pressed)
+        {
+            if (pressed)
+            {
+                if (dl)
+                {
+                    return true;
+                }
+            }
+            if (!pressed)
+            {
+                if (!dl)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public bool A(bool pressed) {
             if (pressed) 
