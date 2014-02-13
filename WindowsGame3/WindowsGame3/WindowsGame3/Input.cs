@@ -16,28 +16,9 @@ namespace WindowsGame3
         }
         public void Update()
         {
-            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
-            {
-                dl = true;
-            }
-            else
-            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released)
-            {
-                dl = false;
-            }
-            else
-            if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
-            {
-                a = true;
-            }
-            else
-            if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Released)
-            {
-                a = false;
-            }
-            else
-            
-            fls();
+             dl = GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed;
+             a = GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed;
+
         }
         public bool DLeft(bool pressed)
         {
@@ -72,9 +53,5 @@ namespace WindowsGame3
             }
             return false;
         }
-        protected void fls() {
-            a = false;
-        }
-
     }
 }

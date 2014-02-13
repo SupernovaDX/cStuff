@@ -22,7 +22,13 @@ namespace WindowsGame3
         float ppx;
         float ppy;
         public Animate animate;
-        private Input input;
+        Vector2 position;
+        Vector2 velocitymin;
+        Vector2 velocitymax;
+        Vector2 cvelocity;
+        Vector2 acceleration;
+        Vector2 gravity = new Vector2(0, -9.8f);
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -38,8 +44,7 @@ namespace WindowsGame3
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            ppx = 0;
-            ppy = 0;
+            position = new Vector2(400, 400);
             base.Initialize();
         }
 
@@ -54,7 +59,9 @@ namespace WindowsGame3
             //shuttle = Content.Load<Texture2D>("shuttle");
             Texture2D texture = Content.Load<Texture2D>("SmileyWalk");
             animate = new Animate(texture, 4, 4);
-            input = new Input();
+            velocitymin = new Vector2(0, 0);
+            velocitymax = new Vector2(0, 300);
+            acceleration = (velocitymax - velocitymin) / 1;
 
             // TODO: use this.Content to load your game content here
         }
@@ -75,17 +82,17 @@ namespace WindowsGame3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            input.Update();
-            if (input.DLeft(true)){
-                ppx++; 
-                ppy = ppx * 2;
-            }
-            if (input.A(true)) {
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
+            {
+                float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                acceleration = acceleration + gravity;
+                cvelocity = acceleration * time;
+                position -= cvelocity;
                 animate.Update();
-            }
-            if (input.A(false)) {
-                animate.Reset();
-            }
+            }           
+
 
             // Allows the game to exit
 
@@ -102,12 +109,12 @@ namespace WindowsGame3
         {
             spriteBatch.Begin();
             //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
-            animate.Draw(spriteBatch, new Vector2(ppx,ppy));
+            animate.Draw(spriteBatch, position);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
-        }
+        }       
     }
 }
