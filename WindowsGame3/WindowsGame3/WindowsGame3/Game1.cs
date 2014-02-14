@@ -19,6 +19,7 @@ namespace WindowsGame3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //private Texture2D shuttle;
+        private Texture2D background;
         float ppx;
         float ppy;
         public Animate animate;
@@ -46,7 +47,7 @@ namespace WindowsGame3
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            position = new Vector2(400, 400);
+            position = new Vector2(0, 0);
             base.Initialize();
             XMove = new Vector2(50, 0);
         }
@@ -61,6 +62,7 @@ namespace WindowsGame3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //shuttle = Content.Load<Texture2D>("shuttle");
             Texture2D texture = Content.Load<Texture2D>("SmileyWalk");
+            background = Content.Load<Texture2D>("Background");
             animate = new Animate(texture, 4, 4);
             acceleration = (velocitymax - velocitymin) / 1;
             isGrounded = true;
@@ -88,7 +90,6 @@ namespace WindowsGame3
             float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
             double time2 = gameTime.ElapsedGameTime.TotalSeconds;
             double timer;
-            Boolean buttonUnPressed;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
             {
@@ -140,7 +141,7 @@ namespace WindowsGame3
  
                 acceleration = acceleration + gravity;
                 cvelocity = acceleration * time;
-                position -= cvelocity;
+                position += cvelocity;
                 animate.Update();
             }
 
@@ -156,8 +157,9 @@ namespace WindowsGame3
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
-            animate.Draw(spriteBatch, position);
+            spriteBatch.Draw(background, position, Color.White);
+            animate.Draw(spriteBatch, new Vector2(150,350));
+            
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.End();
             // TODO: Add your drawing code here
