@@ -28,6 +28,8 @@ namespace WindowsGame3
         Vector2 cvelocity;
         Vector2 acceleration;
         Vector2 gravity = new Vector2(0, -9.8f);
+        Vector2 XMove;
+        public bool isGrounded;
 
         public Game1()
         {
@@ -46,6 +48,7 @@ namespace WindowsGame3
             // TODO: Add your initialization logic here
             position = new Vector2(400, 400);
             base.Initialize();
+            XMove = new Vector2(50, 0);
         }
 
         /// <summary>
@@ -59,9 +62,9 @@ namespace WindowsGame3
             //shuttle = Content.Load<Texture2D>("shuttle");
             Texture2D texture = Content.Load<Texture2D>("SmileyWalk");
             animate = new Animate(texture, 4, 4);
-            velocitymin = new Vector2(0, 0);
-            velocitymax = new Vector2(0, 300);
             acceleration = (velocitymax - velocitymin) / 1;
+            isGrounded = true;
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -82,21 +85,66 @@ namespace WindowsGame3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            double time2 = gameTime.ElapsedGameTime.TotalSeconds;
+            double timer;
+            Boolean buttonUnPressed;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
             {
-                float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (isGrounded)
+                {
+                    isJumping();
+                }
+            }
+            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
+            {
+                timer = 0;
 
-                acceleration = acceleration + gravity;
-                cvelocity = acceleration * time;
-                position -= cvelocity;
-                animate.Update();
-            }           
+                if (timer < .5)
+                {
+                    timer = 1 + timer * time2;
+                    XMove += new Vector2(10, 0);
+                }
+   
+                position -= XMove * time;
+            }
 
+            if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
+            {
+                timer = 0;
+
+                if (timer < .5)
+                {
+                    timer = 1 + timer * time2;
+                    XMove += new Vector2(10, 0);
+                }
+
+                position += XMove * time;
+            }
+            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Released)
+            {
+                timer = 0;
+                XMove = new Vector2(50, 0);
+
+            }
+
+
+            
 
             // Allows the game to exit
 
             // TODO: Add your update logic here
+            if (!isGrounded)
+            {
+ 
+                acceleration = acceleration + gravity;
+                cvelocity = acceleration * time;
+                position -= cvelocity;
+                animate.Update();
+            }
+
+            
 
             base.Update(gameTime);
         }
@@ -115,6 +163,12 @@ namespace WindowsGame3
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
-        }       
+        }
+        public void isJumping() {
+            velocitymin = new Vector2(0, 0);
+            velocitymax = new Vector2(0, 450);
+            acceleration = (velocitymax - velocitymin) / 1;
+            isGrounded = false;
+        }
     }
 }
